@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Watch is that code</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="clock" class="glow">00:00:00</div>
+    <script>
+        function setTime(){
+            let time = new Date();
+            let hr = time.getHours();
+            let min = time.getMinutes();
+            let sec = time.getSeconds();
+            season = "AM";
+
+            if(hr > 12){
+                hr -= 12;
+                season = "PM";
+            }
+            if(hr == 0){
+                hr = 12;
+                season = "Am";
+            }
+
+            hr = (hr < 10) ? "0" + hr : hr;
+            min = (min < 10) ? "0" + min : min;
+            sec = (sec < 10) ? "0" + sec : sec;
+
+            let totalTime = hr + ":" + min + ":" + sec + season; 
+            document.getElementById("clock").innerText = totalTime;
+            setTimeout(setTime, 1000);
+        }
+        setTime();
+    </script>
+</body>
+
+</html>
